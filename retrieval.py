@@ -4,7 +4,7 @@ from googleapiclient.discovery import build
 
 def main():
   service = build("customsearch", "v1",
-            developerKey="AIzaSyDRRpR3GS1F1_jKNNM9HCNd2wJQyPG3oN0")
+            developerKey="AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU")
 
   res = service.cse().list(
       q='lectures',
