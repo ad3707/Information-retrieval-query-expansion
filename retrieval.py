@@ -62,15 +62,21 @@ def get_feedback_from_user(user_res):
 def make_bag_of_words(query_li, relevant_docs, irrelevant_docs):
     bag_of_words = dict()
     idx = 0
-    for doc in query_li + relevant_docs + irrelevant_docs:
-        for term in doc:
-            if term in bag_of_words:
-                bag_of_words[term]["freq"] += 1
+    words = query_li + [text_to_list(doc["summary"]) for doc in irrelevant_docs][0] + [text_to_list(doc["summary"]) for doc in relevant_docs][0]
+    for word in words:
+            if word in bag_of_words:
+                bag_of_words[word]["freq"] += 1
             else:
-                bag_of_words[term] = {"index": idx,
+                bag_of_words[word] = {"index": idx,
                                       "freq": 1}
+                idx += 1
     return bag_of_words
 
+def clean_word(word):
+    return ''.join(ch for ch in word if ch.isalnum()).lower() # TODO: more error checking and get rid of punctuation make sure this works
+
+def text_to_list(text):
+    return [clean_word(w) for w in text.split()]
 
 def is_precision_meet(precision, target_value, relevant_docs, irrelevant_docs):
     num_documents = len(relevant_docs) + len(irrelevant_docs)
@@ -108,13 +114,13 @@ def weight(N, tf, df):
 
 def get_document_matrix(docs, bag_of_words, N):
     m = np.zeros((len(docs), len(bag_of_words)))
-    for k in len(docs):
-        doc = docs[k]
+    for k in range(len(docs)):
+        doc = text_to_list(docs[k]["summary"])
         doc_tf = [0] * len(bag_of_words)
         for term in doc:
             doc_tf[bag_of_words[term]["index"]] += 1
-        doc_vec = np.zeros(())
-        for word in bag_of_words:
+        doc_vec = np.zeros((len(bag_of_words)))
+        for word in bag_of_words.values():
             idx = word["index"]
             tf = doc_vec[idx]
             df = word["freq"]
@@ -139,11 +145,12 @@ def main():
         # TODO: should we stop?
         N = len(relevant_docs) + len(irrelevant_docs) # TODO we should figure out how to handle this during an iteration
 
-        bag_of_words = make_bag_of_words(relevant_docs, irrelevant_docs)
-        q_vec = vectorize_text(query_li)
+        bag_of_words = make_bag_of_words(query_li, relevant_docs, irrelevant_docs)
+        q_vec = vectorize_text(query_li, bag_of_words)
+        relevant_m = get_document_matrix(relevant_docs, bag_of_words, N)
+        irrelevant_m = get_document_matrix(irrelevant_docs, bag_of_words, N)
+        query_next = rocchio_algo(relevant_m, irrelevant_m, bag_of_words)
 
-        relevant_m = get_document_matrix(relevant_docs, bag_of_words)
-        irrelevant_m = get_document_matrix(irrelevant_docs, bag_of_words)
 
 
 if __name__ == '__main__':
