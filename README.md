@@ -33,6 +33,7 @@ This function implements Rocchio's algorithm which is used to determine the quer
 vectorize_text:
 
 get_query_words:
+This function returns the words we are augmenting to the new query. If the word is already in the query, we set it to negative infinity. The algorithm for this function is that it gives the indices of the top three weights in the matrix. If the product of a and the difference between the top two values are less than the third and second highest weights, then it will append the second highest and highest weighted word. Otherwise, it will just append the highest weighted word in the new query. 
 
 get_word_from_inx:
 
