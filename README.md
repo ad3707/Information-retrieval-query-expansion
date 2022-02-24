@@ -17,6 +17,8 @@ Query-modification Method fo Description:
 
 
 Google Custom Search Engine JSON API Key:
+key = "AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU"
 
 Engine ID:
+id = 'e1418010197679c8b'
 
