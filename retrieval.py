@@ -1,60 +1,18 @@
 import pprint
-from googleapiclient.discovery import build
-import numpy as np
-import math
 import sys
 
-def valid_args(args):
-    if len(args) != 4:
-        return False
-    key, engine_id, target_precision, raw_query = args
-
-    try:
-        if float(target_precision) > 1 or float(target_precision) < 0:
-            return False
-        r = get_results(raw_query, target_precision, key, engine_id)
-        return True
-    except:
-        return False
-
-def get_results(query, target_precision, key, engine_id):
-    """
-    TODO
-    :param key:
-    :param engine_id:
-    :param target_precision:
-    :param query:
-    :return:
-    """
-    service = build("customsearch", "v1",
-                    developerKey=key)
-    print(query)
-    res = service.cse().list(
-        q=query,
-        cx=engine_id,
-    ).execute()
-
-    print("Query:", query)
-    print("Precision:", target_precision)
-
-    user_res = list()
-    num_of_results = len(list(res["items"]))
-
-    for result in res["items"]:
-        if "fileType" in result:
-            continue
-
-        document = {"title": result["title"],
-                    "url": result["formattedUrl"],
-                    "summary": result["snippet"]}
-        user_res.append(document)
-
-    return user_res, num_of_results
+from googleapi import *
+from textprocessing import *
+from makequery import *
 
 
 def get_feedback_from_user(user_res):
     """
-    TODO
+    iterates through search results returned from external API
+    asks user if result is relevant
+
+    :param user_res: list of json documents
+    :return: tuple of list of json relevant documents, list of json irrelevant documents
     """
     relevant_docs = list()
     irrelevant_docs = list()
@@ -64,7 +22,7 @@ def get_feedback_from_user(user_res):
         print("RESULT " + str(i) + "\n" + "-" * 20)
         doc = user_res[i - 1]
         pprint.pprint(doc)
-        feedback = input("Relevant? (Y/N)  ")  # TODO: error checking stuff
+        feedback = input("Relevant? (Y/N)  ")
         while True:
             if feedback == "Y" or feedback == "N":
                 break
@@ -79,139 +37,21 @@ def get_feedback_from_user(user_res):
     return relevant_docs, irrelevant_docs
 
 
-def make_bag_of_words(query_li, relevant_docs, irrelevant_docs):
-    """
-    TODO
-    :param query_li:
-    :param relevant_docs:
-    :param irrelevant_docs:
-    :return:
-    """
-    bag_of_words = dict()
-    idx = 0
-    words = query_li.copy()
-    for doc in irrelevant_docs + relevant_docs:
-        words += text_to_list(doc["title"])
-        words += text_to_list(doc["summary"])
-    for word in words:
-        if word in bag_of_words:
-            bag_of_words[word]["freq"] += 1
-        else:
-            bag_of_words[word] = {"index": idx,
-                                  "freq": 1}
-            idx += 1
-    return bag_of_words
-
-
-def clean_word(word):
-    # TODO
-    return word.lower()
-    # return ''.join(ch for ch in word if
-    #               ch.isalnum()).lower()
-
-
-def text_to_list(text):
-    return [clean_word(w) for w in text.split()]
-
-
 def is_precision_meet(target_value, relevant_docs, irrelevant_docs):
+    """
+    returns whether target precision established by the user is met with previous api search
+
+    :param target_value: target precision that the user established
+    :param relevant_docs: list of json relevant documents that contain summary, title, and url
+    :param irrelevant_docs: list of json irrelevant documents that contain summary, title, and url
+    :return: True or False boolean
+    """
     num_documents = len(relevant_docs) + len(irrelevant_docs)
     precision = len(relevant_docs) / num_documents
     if target_value <= precision:
         return True, precision
     return False, precision
 
-
-def rocchio_algo(relevant_docs, irrelevant_docs, query_prev, alpha=1, beta=0.75, gamma=0.15):
-    num_relevant = len(relevant_docs)
-    num_irrelevant = len(irrelevant_docs)
-
-    query_next = (alpha * query_prev) + (beta * (np.sum(relevant_docs))/num_relevant) - gamma * (np.sum(irrelevant_docs))/num_irrelevant
-    return query_next
-
-
-
-
-def vectorize_text(list_of_words, bag_of_words):
-    """
-    :param bag_of_words:
-    :param list_of_words:
-    :param text:
-    :return:
-    """
-    vec = [0] * len(bag_of_words)
-    for term in list_of_words:
-        vec[bag_of_words[term]["index"]] += 1
-
-    return vec / np.sum(vec)
-
-
-def get_query_words(prev_query, next_query, bag_of_words):
-    """
-    TODO maybe we should rearrange the words
-        # then we return the query --> we can also consider the query_next weights for the words we have already and rearrange the order
-
-    :param prev_query:
-    :param next_query:
-    :param bag_of_words:
-    :return:
-    """
-    a = 1.5
-    # find the index for the words in prev_query and make it 0 in next_query
-    for query_word in prev_query:
-        next_query[bag_of_words[query_word]["index"]] = -1 * math.inf
-
-    max_idxs = np.argpartition(next_query, -3)[-3:]  # indices in ascending value order
-    sorted_max = next_query[max_idxs]
-
-    new_query_words = list()
-    new_query_words.append(get_word_from_idx(max_idxs[2], bag_of_words))
-    if a * (sorted_max[2] - sorted_max[1]) <= (sorted_max[1] - sorted_max[0]):
-        new_query_words.append(get_word_from_idx(max_idxs[1], bag_of_words))
-
-    a = get_word_from_idx(max_idxs[0], bag_of_words)
-    b = get_word_from_idx(max_idxs[1], bag_of_words)
-    c = get_word_from_idx(max_idxs[2], bag_of_words)
-
-    return new_query_words
-
-
-def get_word_from_idx(idx, bag_of_words):
-    for word, value in bag_of_words.items():
-        if value["index"] == idx:
-            return word
-    return ""
-
-
-def weight(N, tf, df):
-    if tf == 0:
-        return 0
-
-    return (1 + math.log10(tf)) * math.log10(N / df)
-
-
-def get_document_matrix(docs, bag_of_words, N):
-    m = np.zeros((len(docs), len(bag_of_words)))
-    for k in range(len(docs)):
-        doc = text_to_list(docs[k]["summary"])
-
-        doc_tf = [0] * len(bag_of_words)  # document vector initialized to 0's
-
-        # doc_tf has the frequency count of each term
-        for term in doc:
-            doc_tf[bag_of_words[term]["index"]] += 1
-
-        # now find the if-idf weights for the document
-        doc_vec = np.zeros((len(bag_of_words)))
-        for word in bag_of_words.values():
-            idx = word["index"]
-            tf = doc_tf[idx]
-            df = word["freq"]
-            w = weight(N, tf, df)
-            doc_vec[idx] = w
-        m[k] = doc_vec
-
-    return m
 
 def main():
     args = tuple(sys.argv[1:])
