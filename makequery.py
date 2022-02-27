@@ -20,7 +20,8 @@ def weight(N, tf, df):
 
 def rocchio_algo(relevant_matrix, irrelevant_matrix, query_prev, alpha=1, beta=0.75, gamma=0.15):
     """
-
+    Implements Rocchio's algorithm which is used to determine the query term weights in the next query. 
+    Set alpha to 1, beta to 0.75, and gamma to 0.15 based on this article https://nlp.stanford.edu/IR-book/html/htmledition/the-rocchio71-algorithm-1.html.
     :param relevant_matrix:
     :param irrelevant_matrix:
     :param query_prev:
@@ -42,6 +43,11 @@ def rocchio_algo(relevant_matrix, irrelevant_matrix, query_prev, alpha=1, beta=0
 
 def get_query_words(prev_query, next_query, bag_of_words):
     """
+    Returns the words we are augmenting to the new query. 
+    If the word is already in the query, we set it to negative infinity. 
+    The algorithm for this function is that it gives the indices of the top three weights in the matrix. 
+    If the product of a and the difference between the top two values are less than the third and second highest weights, then it will append the second highest and highest weighted word. 
+    Otherwise, it will just append the highest weighted word in the new query
 
     :param prev_query:
     :param next_query:
@@ -76,7 +82,7 @@ def get_query_words(prev_query, next_query, bag_of_words):
 
 def get_document_matrix(docs, bag_of_words, N):
     """
-
+    This function initializes the document vector and finds the tf and df for the documents.
     :param docs:
     :param bag_of_words: dictionary of words -- that map to --> dictionary with index and frequency of word
     example of a key: value in bag of words
