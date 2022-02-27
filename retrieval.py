@@ -1,28 +1,37 @@
 import pprint
 from googleapiclient.discovery import build
 import numpy as np
-import random
 import math
+import sys
 
-key = "AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU"  # TODO: make an environment variable
-id = 'e1418010197679c8b'
+def valid_args(args):
+    if len(args) != 4:
+        return False
+    key, engine_id, target_precision, raw_query = args
 
+    try:
+        if float(target_precision) > 1 or float(target_precision) < 0:
+            return False
+        r = get_results(raw_query, target_precision, key, engine_id)
+        return True
+    except:
+        return False
 
-# TODO: break apart files & add in comments
-
-def get_results(query, target_precision):
+def get_results(query, target_precision, key, engine_id):
     """
     TODO
+    :param key:
+    :param engine_id:
     :param target_precision:
     :param query:
     :return:
     """
     service = build("customsearch", "v1",
                     developerKey=key)
-
+    print(query)
     res = service.cse().list(
         q=query,
-        cx=id,
+        cx=engine_id,
     ).execute()
 
     print("Query:", query)
@@ -33,7 +42,6 @@ def get_results(query, target_precision):
 
     for result in res["items"]:
         if "fileType" in result:
-            print("PDF FOUND !!")
             continue
 
         document = {"title": result["title"],
@@ -52,9 +60,9 @@ def get_feedback_from_user(user_res):
     irrelevant_docs = list()
 
     print("\nGoogle Search Results:\n" + "=" * 30)
-    for i in range(1, 1+len(user_res)):
+    for i in range(1, 1 + len(user_res)):
         print("RESULT " + str(i) + "\n" + "-" * 20)
-        doc = user_res[i-1]
+        doc = user_res[i - 1]
         pprint.pprint(doc)
         feedback = input("Relevant? (Y/N)  ")  # TODO: error checking stuff
         while True:
@@ -62,7 +70,6 @@ def get_feedback_from_user(user_res):
                 break
             else:
                 feedback = input("Enter valid response. Y or N only.")
-
 
         if feedback == "Y":
             relevant_docs.append(doc)
@@ -206,13 +213,18 @@ def get_document_matrix(docs, bag_of_words, N):
 
     return m
 
-
 def main():
-    raw_query = input("Search: ")
-    target_precision = float(input("Precision: ")) # TODO: ERROR CHECKING
-    query_li = text_to_list(raw_query)
-    user_res, num_of_results = get_results(raw_query, target_precision)
+    args = tuple(sys.argv[1:])
+    if not valid_args(args):
+        print("Invalid arguments.")
+        print("Usage: python3 retrieval.py <google api key> <google engine id> <precision> <query>")
+        return
 
+    key, engine_id, target_precision, raw_query = args
+    print(type(raw_query))
+    target_precision = float(target_precision)
+    query_li = text_to_list(raw_query)
+    user_res, num_of_results = get_results(raw_query, target_precision, key, engine_id)
 
     if num_of_results < 10:
         print("Less than 10 results were found in first iteration.\nProgram will terminate.")  # TODO: later problem
@@ -221,7 +233,7 @@ def main():
     relevant_docs, irrelevant_docs = get_feedback_from_user(user_res)
     if len(relevant_docs) == 0:
         print("No relevant documents found in first iteration.\nProgram will terminate.")
-        return  # TODO: later problem
+        return
 
     precision_meet, current_precision = is_precision_meet(target_precision, relevant_docs, irrelevant_docs)
     while not precision_meet:
@@ -243,14 +255,12 @@ def main():
         print("\nIndexing results ...\n")
         print("Augmenting by", " ".join(next_q_list))
 
-
-        user_res, num_of_results = get_results(next_q, target_precision)
+        user_res, num_of_results = get_results(next_q, target_precision, key, engine_id)
         relevant_docs, irrelevant_docs = get_feedback_from_user(user_res)
 
         precision_meet, current_precision = is_precision_meet(target_precision, relevant_docs, irrelevant_docs)
         query_li = query_li + next_q_list
 
-    print("Done.")
 
 if __name__ == '__main__':
-    print(main())
+    main()
