@@ -34,19 +34,22 @@ roccio_algo:
 This function implements Rocchio's algorithm which is used to determine the query term weights in the next query. We set alpha to 1, beta to 0.75, and gamma to 0.15 based on this article https://nlp.stanford.edu/IR-book/html/htmledition/the-rocchio71-algorithm-1.html. 
 
 vectorize_text:
+This function initializes a vector and normalizes it. 
 
 get_query_words:
 This function returns the words we are augmenting to the new query. If the word is already in the query, we set it to negative infinity. The algorithm for this function is that it gives the indices of the top three weights in the matrix. If the product of a and the difference between the top two values are less than the third and second highest weights, then it will append the second highest and highest weighted word. Otherwise, it will just append the highest weighted word in the new query. 
 
-get_word_from_inx:
+get_word_from_idx:
+This function returns the word associated with the given index in the bag of words representation. 
 
 weight:
 This function assigns the tf-idf weights to the terms. 
 
 get_document_matrix:
+This function initializes the document vector and finds the tf and df for the documents. 
 
 main: 
-
+The main function prompts the user to enter their search query and target precision. It checks that the number of results is greater or equal to 10. It also checks that in the first iteration there are relevant documents. While the precision is not met, it calls all the previous functions and prints a summary of each iteration. 
 
 
 **Query-modification Method fo Description: **
