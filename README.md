@@ -51,6 +51,11 @@ This function initializes the document vector and finds the tf and df for the do
 main: 
 The main function prompts the user to enter their search query and target precision. It checks that the number of results is greater or equal to 10. It also checks that in the first iteration there are relevant documents. While the precision is not met, it calls all the previous functions and prints a summary of each iteration. 
 
+External libraries: 
+pprint- pretty print to customize the formatting of the output
+numpy - for manipulating matrices
+math 
+googleapiclient.discovery 
 
 **Query-modification Method fo Description: **
 
