@@ -45,6 +45,7 @@ def make_bag_of_words(query_li, docs):
                                       "df-freq": 1,
                                       "docs": {i}}
                 idx += 1
+
     return bag_of_words
 
 
