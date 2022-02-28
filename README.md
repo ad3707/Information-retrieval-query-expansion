@@ -9,6 +9,7 @@ README.md
 **How to Run:**
 
         ** write down all commands for software and dependencies **
+        python3 retrieval.py "AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU" "e1418010197679c8b" 0.9 "per se"
 
 **Internal Design Description:**
 
