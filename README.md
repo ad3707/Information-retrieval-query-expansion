@@ -13,14 +13,23 @@ README.md
 
 **Internal Design Description:**
 
+We divided our code into separate files:
+
+makequery.py: This file contains funcions that relate to creating the next query. It contains the Rocchio algorithm and the function for retrieivng the words associated with the highest weights. 
+
+retrieval.py: This file contains the code that prompts the user for feedback and checks if the precision is met to stop the iterations. 
+
+textprocess.py: This file deals with creating the bag of words representation model and preprocessing the text. 
+
+googleapi.py: This file displays the top 10 google results from the API. 
+
 External libraries: pprint- pretty print to customize the formatting of the output, numpy - for manipulating matrices, math, googleapiclient.discovery 
 
 **Query-modification Method Description: **
 
 A bag of words representation was created which is a multiset of the words found in the documents. It assigns an index and a frequency of each word. If the word is already found in the bag of words representation, then it would increment the frequency by 1. Bag of words also includes the title words twice to give them more weight. 
 
-weight:
-This function assigns the tf-idf weights to the terms. 
+weight: This function assigns the tf-idf weights to the terms. 
 
 We implemented Rocchio's algorithm which is used to determine the query term weights in the next query. We also normalized the weights and set alpha to 1, beta to 0.75, and gamma to 0.15 based on this article https://nlp.stanford.edu/IR-book/html/htmledition/the-rocchio71-algorithm-1.html. 
 
