@@ -1,5 +1,7 @@
 import numpy as np
-
+from nltk.stem import PorterStemmer
+import nltk
+from nltk.corpus import stopwords
 
 def make_bag_of_words(query_li, relevant_docs, irrelevant_docs):
     """
@@ -10,17 +12,26 @@ def make_bag_of_words(query_li, relevant_docs, irrelevant_docs):
     :param relevant_docs: list of json relevant documents that contain summary, title, and url
     :param irrelevant_docs: list of json irrelevant documents that contain summary, title, and url
     :return: dictionary of words -- that map to --> dictionary with index and frequency of word
-    
+
     example of a key: value in bag of words
         "cup": {"index": 1,
                 "freq": 5}
     """
     bag_of_words = dict()
+
     idx = 0
     words = query_li.copy()
+    #nltk.download('stopwords')
+    #stop_words = set(stopwords.words('english'))
+
     for doc in irrelevant_docs + relevant_docs:
-        words += text_to_list(doc["title"])
-        words += text_to_list(doc["summary"])
+            words += text_to_list(doc["title"])
+            words += text_to_list(doc["summary"])
+
+    #for w in list(words):
+        #if w in stop_words:
+            # words.remove(w)
+
     for word in words:
         if word in bag_of_words:
             bag_of_words[word]["freq"] += 1
@@ -28,7 +39,19 @@ def make_bag_of_words(query_li, relevant_docs, irrelevant_docs):
             bag_of_words[word] = {"index": idx,
                                   "freq": 1}
             idx += 1
+
+    df = {}
+
+    for doc in words:
+        for w in doc:
+            df[w] += 1
+
+    #N = len(irrelevant_docs + relevant_docs)
+    #df = dict.fromkeys(relevant_docs[0].keys(),0)
+    #for word, val in df.items():
+        #df = val
     return bag_of_words
+
 
 
 def clean_word(word):
@@ -38,6 +61,8 @@ def clean_word(word):
     :param word: string
     :return: lower-case string
     """
+    stemmer = PorterStemmer()
+    word = stemmer.stem(word)
     return word.lower()
 
 
@@ -48,7 +73,8 @@ def text_to_list(text):
     :param text: string that contains words
     :return: list of string words
     """
-    return [clean_word(w) for w in text.split()]
+    list = [clean_word(w) for w in text.split()]
+    return list
 
 
 def vectorize_text(list_of_words, bag_of_words):
