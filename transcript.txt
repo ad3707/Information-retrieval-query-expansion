@@ -2,9 +2,7 @@
 brin
 Query: brin
 Precision: 0.9
-brin
-Query: brin
-Precision: 0.9
+
 
 Google Search Results:
 ==============================
@@ -199,9 +197,7 @@ ________________________________________________________________________________
 per se
 Query: per se
 Precision: 0.9
-per se
-Query: per se
-Precision: 0.9
+
 
 Google Search Results:
 ==============================
@@ -388,9 +384,7 @@ ________________________________________________________________________________
 cases
 Query: cases
 Precision: 0.9
-cases
-Query: cases
-Precision: 0.9
+
 
 Google Search Results:
 ==============================
