@@ -21,21 +21,21 @@ def weight(N, tf, df):
 def rocchio_algo(relevant_matrix, irrelevant_matrix, query_prev, alpha=1, beta=0.75, gamma=0.15):
     """
     Implements Rocchio's algorithm which is used to determine the query term weights in the next query. 
-    Set alpha to 1, beta to 0.75, and gamma to 0.15 based on this article https://nlp.stanford.edu/IR-book/html/htmledition/the-rocchio71-algorithm-1.html.
-    :param relevant_matrix:
-    :param irrelevant_matrix:
-    :param query_prev:
-    :param alpha:
-    :param beta:
-    :param gamma:
-    :return:
+    Set alpha to 1, beta to 0.75, and gamma to 0.15 based on this article https://nlp.stanford.edu/IR-book/html/htmledition/the-rocchio71-algorithm-1.html
+
+    :param relevant_matrix: matrix representation of relevant documents using df-idf weights
+    :param irrelevant_matrix: matrix representation of irrelevant documents using df-idf weights
+    :param query_prev: vector representation of current query
+    :param alpha: rate of how much of the original query to retain during iteration
+    :param beta: learning rate for relevant information
+    :param gamma: learning rate for irrelevant information
+    :return: vector representation of next query
     """
     num_relevant = len(relevant_matrix)
     num_irrelevant = len(irrelevant_matrix)
 
     relevant_vec = beta * np.sum(relevant_matrix, axis=0) / num_relevant
     irrelevant_vec = gamma * np.sum(irrelevant_matrix, axis=0) / num_irrelevant
-    change = relevant_vec - irrelevant_vec
     query_next = (alpha * query_prev) + relevant_vec - irrelevant_vec
 
     return query_next / np.sum(query_next)
@@ -55,12 +55,9 @@ def get_query_words(prev_query, next_query, bag_of_words):
     example of a key: value in bag of words
         "cup": {"index": 1,
                 "freq": 5}
-    :return:
+    :return: list of query words
     """
 
-    # TODO maybe we should rearrange the words
-    # then we return the query --> we can also consider the query_next weights for the words we have already and rearrange the order
-    a = 1.5
     # find the index for the words in prev_query and make it 0 in next_query
     for query_word in prev_query:
         next_query[bag_of_words[query_word]["index"]] = -1 * math.inf
@@ -70,6 +67,8 @@ def get_query_words(prev_query, next_query, bag_of_words):
 
     new_query_words = list()
     new_query_words.append(get_word_from_idx(max_idxs[2], bag_of_words))
+
+    a = 1.5
     if a * (sorted_max[2] - sorted_max[1]) <= (sorted_max[1] - sorted_max[0]):
         new_query_words.append(get_word_from_idx(max_idxs[1], bag_of_words))
 
@@ -83,13 +82,13 @@ def get_query_words(prev_query, next_query, bag_of_words):
 def get_document_matrix(docs, bag_of_words, N):
     """
     This function initializes the document vector and finds the tf and df for the documents.
-    :param docs:
+    :param docs: list of document dictionaries that contain summary, title, and url
     :param bag_of_words: dictionary of words -- that map to --> dictionary with index and frequency of word
     example of a key: value in bag of words
         "cup": {"index": 1,
                 "freq": 5}
-    :param N:
-    :return:
+    :param N: number of documents in collection
+    :return: numpy matrix of shape length of documents x length of bag of words
     """
     m = np.zeros((len(docs), len(bag_of_words)))
     for k in range(len(docs)):
