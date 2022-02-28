@@ -9,53 +9,38 @@ README.md
 **How to Run:**
 
         ** write down all commands for software and dependencies **
-        python3 retrieval.py "AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU" "e1418010197679c8b" 0.9 "per se"
+        sudo apt-get update
+        sudo apt-get install python3-pip
+        sudo apt-get install python3-venv
+        python3 -m venv dbproj
+        pip install --upgrade google-api-python-client
+        python3 retrieval.py "AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU" "e1418010197679c8b" <precision> <query word>
 
 **Internal Design Description:**
 
-get_results: 
-This function returns the top 10 google results to the user. It also checks that they are all html files. 
+We divided our code into separate files:
 
-get_feedback_from_user: 
-This function prints out the google search results one by one and asks the user if it is relevant for their search. It creates two lists of relevant and irrelevant docs and appends documents to one of the list based on the user feedback. It also does error checking to ensure the user only enters in Y or N for yes and no. 
+makequery.py: This file contains funcions that relate to creating the next query. It contains the Rocchio algorithm and the function for retrieivng the words associated with the highest weights. 
 
-make_bag_of_words:
-This function creates a bag of words which is a multiset of the words found in the documents. It assigns an index and a frequency of each word. If the word is already found in the bag of words representation, then it would increment the frequency by 1.
+retrieval.py: This file contains the code that prompts the user for feedback and checks if the precision is met to stop the iterations. 
 
-clean_word:
-This function preprocesses the word passed in by turning it into lowercase. 
+textprocess.py: This file deals with creating the bag of words representation model and preprocessing the text. 
 
-text_to_list: 
-This function splits the the text into a list using the split method. 
-
-is_precision_meet:
-This function checks if the target precision is met. It calculates precision by taking the relevant documents and dividing it by the total number of documents. It returns the current precision value and a a boolean value of whether the target precision is met or not. 
-
-roccio_algo:
-This function implements Rocchio's algorithm which is used to determine the query term weights in the next query. We set alpha to 1, beta to 0.75, and gamma to 0.15 based on this article https://nlp.stanford.edu/IR-book/html/htmledition/the-rocchio71-algorithm-1.html. 
-
-vectorize_text:
-This function initializes a vector and normalizes it. 
-
-get_query_words:
-This function returns the words we are augmenting to the new query. If the word is already in the query, we set it to negative infinity. The algorithm for this function is that it gives the indices of the top three weights in the matrix. If the product of a and the difference between the top two values are less than the third and second highest weights, then it will append the second highest and highest weighted word. Otherwise, it will just append the highest weighted word in the new query. 
-
-get_word_from_idx:
-This function returns the word associated with the given index in the bag of words representation. 
-
-weight:
-This function assigns the tf-idf weights to the terms. 
-
-get_document_matrix:
-This function initializes the document vector and finds the tf and df for the documents. 
-
-main: 
-The main function prompts the user to enter their search query and target precision. It checks that the number of results is greater or equal to 10. It also checks that in the first iteration there are relevant documents. While the precision is not met, it calls all the previous functions and prints a summary of each iteration. 
+googleapi.py: This file displays the top 10 google results from the API. 
 
 External libraries: pprint- pretty print to customize the formatting of the output, numpy - for manipulating matrices, math, googleapiclient.discovery 
 
-**Query-modification Method fo Description: **
+**Query-modification Method Description: **
 
+A bag of words representation was created which is a multiset of the words found in the documents. It assigns an index and a frequency of each word. If the word is already found in the bag of words representation, then it would increment the frequency by 1. Bag of words also includes the title words twice to give them more weight. 
+
+weight: This function assigns the tf-idf weights to the terms. 
+
+We implemented Rocchio's algorithm which is used to determine the query term weights in the next query. We also normalized the weights and set alpha to 1, beta to 0.75, and gamma to 0.15 based on this article https://nlp.stanford.edu/IR-book/html/htmledition/the-rocchio71-algorithm-1.html. 
+
+After we calculated the weights of the terms, the get_query_words function returns the words we are augmenting to the new query. If the word is already in the query, we set it to negative infinity. The algorithm for this function is that it gives the indices of the top three weights in the matrix. If the product of a and the difference between the top two values are less than the third and second highest weights, then it will append the highest and second highest weighted word in that order. Otherwise, it will just append the highest weighted word in the new query. 
+
+After, we had a function called get_word_from_idx which returns the word associated with the given index in the bag of words representation. 
 
 **Google Custom Search Engine JSON API Key:**
 key = "AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU"

@@ -9,7 +9,7 @@ def weight(N, tf, df):
 
     :param N: number of documents in the collection (usually 10)
     :param tf: term frequency in a given document
-    :param df: database frequency of term in collection
+    :param df: document frequency of term in collection
     :return: float value
     """
     if tf == 0:
