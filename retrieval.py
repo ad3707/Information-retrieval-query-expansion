@@ -61,7 +61,7 @@ def main():
         return
 
     key, engine_id, target_precision, raw_query = args
-    print(type(raw_query))
+
     target_precision = float(target_precision)
     query_li = text_to_list(raw_query)
     docs, num_of_results = get_results(raw_query, target_precision, key, engine_id)
