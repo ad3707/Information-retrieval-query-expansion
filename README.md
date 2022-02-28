@@ -7,6 +7,7 @@
 textprocessing.py  
 googleapi.py  
 textprocessing.py  
+requirements.txt
 README.md
 
 # How to Run:
@@ -15,7 +16,7 @@ README.md
         sudo apt-get install python3-pip
         sudo apt-get install python3-venv
         python3 -m venv dbproj
-        pip install --upgrade google-api-python-client
+        pip install -r requirements.txt
         python3 retrieval.py "AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU" "e1418010197679c8b" <precision> <query word>
 TODO
 
