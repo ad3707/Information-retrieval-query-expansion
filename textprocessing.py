@@ -4,7 +4,8 @@ import numpy as np
 def make_bag_of_words(query_li, docs):
     """
     creates a bag of words representation using all the titles + summaries of the documents as well as the current query
-    creates a dictionary where each unique words has an assigned index and frequency of the word in the collection
+    creates a dictionary where each unique word has an assigned index, frequency of the word in the collection,
+        document frequency, set of documents that the word is found in
 
     :param docs: list of json documents that contain summary, title, and url
     :param query_li: list of query words
@@ -12,7 +13,9 @@ def make_bag_of_words(query_li, docs):
     
     example of a key: value in bag of words
         "cup": {"index": 1,
-                "freq": 5}
+                "freq": 5,
+                "df-freq": 2,
+                "docs": {1,4}}
     """
     bag_of_words = dict()
     idx = 0
@@ -50,7 +53,7 @@ def make_bag_of_words(query_li, docs):
 
 def clean_word(word):
     """
-    preprocesses the string by turning it into lower-case
+    preprocesses the string by removing all non-alphanumeric values
 
     :param word: string
     :return: lower-case string
@@ -74,10 +77,12 @@ def vectorize_text(list_of_words, bag_of_words):
     iterates through every word in list and generates the frequency of the words
     normalizes the vector
 
-    :param bag_of_words: dictionary of words -- that map to --> dictionary with index and frequency of word
+    :param bag_of_words: dictionary of words -- that map to --> dictionary with index, frequencies of a word, document ids
     example of a key: value in bag of words
         "cup": {"index": 1,
-                "freq": 5}
+                "freq": 5,
+                "df-freq": 2,
+                "docs": {1,4}}
     :param list_of_words: list of strings that was created by text_by_list
     :return: a list of N integers where N is the number of words in the bag of words representation
     """
@@ -93,10 +98,12 @@ def get_word_from_idx(idx, bag_of_words):
     returns the word associated with a given index in the bag of words dictionary
 
     :param idx: index of word
-dictionary of words -- that map to --> dictionary with index and frequency of word
+    :param bag_of_words: dictionary of words -- that map to --> dictionary with index, frequencies of a word, document ids
     example of a key: value in bag of words
         "cup": {"index": 1,
-                "freq": 5}
+                "freq": 5,
+                "df-freq": 2,
+                "docs": {1,4}}
     :return: word that corresponds to index or empty string
     """
     for word, value in bag_of_words.items():

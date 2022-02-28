@@ -71,7 +71,7 @@ def get_results(query, target_precision, key, engine_id):
 
     user_res = list()
     for result in res["items"]:
-        if "fileType" in result:
+        if "fileFormat" in result:
             continue
 
         document = {"title": result["title"],

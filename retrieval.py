@@ -112,5 +112,6 @@ def main():
     print("Precision Reached:", current_precision)
     print("Number of Iterations:", i)
 
+
 if __name__ == '__main__':
     main()

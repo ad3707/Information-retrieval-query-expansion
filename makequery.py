@@ -7,10 +7,12 @@ def get_document_matrix(docs, bag_of_words, N):
     """
     This function initializes the document vector and finds the tf and df for the documents.
     :param docs: list of document dictionaries that contain summary, title, and url
-    :param bag_of_words: dictionary of words -- that map to --> dictionary with index and frequency of word
+    :param bag_of_words: dictionary of words -- that map to --> dictionary with index, frequencies of a word, document ids
     example of a key: value in bag of words
         "cup": {"index": 1,
-                "freq": 5}
+                "freq": 5,
+                "df-freq": 2,
+                "docs": {1,4}}
     :param N: number of documents in collection
     :return: numpy matrix of shape length of documents x length of bag of words
     """
@@ -65,15 +67,18 @@ def get_query_words(prev_query, next_query, bag_of_words):
     Returns the words we are augmenting to the new query. 
     If the word is already in the query, we set it to negative infinity. 
     The algorithm for this function is that it gives the indices of the top three weights in the matrix. 
-    If the product of a and the difference between the top two values are less than the third and second highest weights, then it will append the second highest and highest weighted word. 
+    If the product of a and the difference between the top two values are less than the third and second highest weights,
+        then it will append the second highest and highest weighted word.
     Otherwise, it will just append the highest weighted word in the new query
 
-    :param prev_query:
-    :param next_query:
-    :param bag_of_words: dictionary of words -- that map to --> dictionary with index and frequency of word
+    :param prev_query: vector representation of the weights of each term
+    :param next_query: vector representation of the weights of each term after using relevancy
+    :param bag_of_words: dictionary of words -- that map to --> dictionary with index, frequencies of a word, document ids
     example of a key: value in bag of words
         "cup": {"index": 1,
-                "freq": 5}
+                "freq": 5,
+                "df-freq": 2,
+                "docs": {1,4}}
     :return: list of query words
     """
 
@@ -87,6 +92,7 @@ def get_query_words(prev_query, next_query, bag_of_words):
     new_query_words = list()
     new_query_words.append(get_word_from_idx(max_idxs[2], bag_of_words))
 
+    # determines whether to append the second highest word based on score differences
     a = 1.5
     if a * (sorted_max[2] - sorted_max[1]) <= (sorted_max[1] - sorted_max[0]):
         new_query_words.append(get_word_from_idx(max_idxs[1], bag_of_words))
@@ -101,7 +107,7 @@ def weight(N, tf, df):
     :param N: number of documents in the collection (usually 10)
     :param tf: term frequency in a given document
     :param df: document frequency of term in collection
-    :return: float value
+    :return: non-negative float value
     """
     if tf == 0:
         return 0

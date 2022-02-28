@@ -69,7 +69,7 @@ An entry in the bag of words may be like:
     "potato": {  
                 "index": 1,  
                 "freq": 10,  
-                "df-freq": 0,  
+                "df-freq": 3,  
                 "docs": {1,2,8}  
               }  
 
