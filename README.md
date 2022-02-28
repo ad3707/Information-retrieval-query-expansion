@@ -1,8 +1,8 @@
-##Name & Uni:
+## Name & Uni: ## 
         Aditi Dam ad3707  
         Shivani Patel svp2128
 
-## List of Files:
+## List of Files: ##
 *retrieval.py*  
 textprocessing.py  
 googleapi.py  
@@ -10,7 +10,7 @@ textprocessing.py
 requirements.txt
 README.md
 
-# How to Run:
+# How to Run: ##
 
         sudo apt-get update
         sudo apt-get install python3-pip
@@ -19,7 +19,7 @@ README.md
         pip install -r requirements.txt
         python3 retrieval.py "AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU" "e1418010197679c8b" <precision> <query word>
 
-###Internal Design Description:
+### Internal Design Description: ### 
 
 **retrieval.py:** main starter code that prompts the user for feedback and checks if the precision is met to stop the iterations  
   
@@ -61,7 +61,7 @@ Contains functionality to retrieve top 10 google results from the API
 - sys - to retrieve command line arguments
 - googleapiclient.discovery - connection to google api for searching
 
-### Query-modification Method Description:
+### Query-modification Method Description: ###
 
 A bag of words representation was created which is a multiset of the words found in the documents. Each particular document summary, title, and title (twice) was used as the stream of text. This brings emphasis to the words that belong in the title of a document.  
 Each words gets assigned a unique index as well and calculates the total frequency, document frequency, and the set of document indices that contain that word.
@@ -93,7 +93,7 @@ Otherwise, it will just append the highest weighted word in the new query.
 Using the bag of words, we can find the word that corresponds to the index or indices that we want to add to the query.
 
 
-### Parameters 
+### Parameters ###
 
 **Google Custom Search Engine JSON API Key:**
 key = "AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU"
