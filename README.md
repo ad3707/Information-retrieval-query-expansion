@@ -17,6 +17,7 @@ README.md
         sudo apt-get install python3-venv
         python3 -m venv dbproj
         pip install -r requirements.txt
+        sudo pip install --upgrade google-api-python-client
         python3 retrieval.py "AIzaSyAGmypTtalCS9lLgosvQiBQBIJ3FbviylU" "e1418010197679c8b" <precision> <query word>
 
 ### Internal Design Description: ### 
