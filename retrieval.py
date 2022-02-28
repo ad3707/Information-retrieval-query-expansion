@@ -64,20 +64,20 @@ def main():
     print(type(raw_query))
     target_precision = float(target_precision)
     query_li = text_to_list(raw_query)
-    user_res, num_of_results = get_results(raw_query, target_precision, key, engine_id)
+    docs, num_of_results = get_results(raw_query, target_precision, key, engine_id)
 
     if num_of_results < 10:
         print("Less than 10 results were found in first iteration.\nProgram will terminate.")  # TODO: later problem
         return
 
-    relevant_docs, irrelevant_docs = get_feedback_from_user(user_res)
+    relevant_docs, irrelevant_docs = get_feedback_from_user(docs)
     if len(relevant_docs) == 0:
         print("No relevant documents found in first iteration.\nProgram will terminate.")
         return
 
     precision_meet, current_precision = is_precision_meet(target_precision, relevant_docs, irrelevant_docs)
     while not precision_meet:
-        bag_of_words = make_bag_of_words(query_li, relevant_docs, irrelevant_docs)
+        bag_of_words = make_bag_of_words(query_li, docs)
         q_vec = vectorize_text(query_li, bag_of_words)
 
         N = len(relevant_docs) + len(irrelevant_docs)
@@ -101,6 +101,9 @@ def main():
         precision_meet, current_precision = is_precision_meet(target_precision, relevant_docs, irrelevant_docs)
         query_li = query_li + next_q_list
 
+    print("\n\nFINAL FEEDBACK SUMMARY")
+    print("Query:", next_q)
+    print("Precision Reached:", current_precision)
 
 if __name__ == '__main__':
     main()

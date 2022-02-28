@@ -14,8 +14,11 @@ def weight(N, tf, df):
     """
     if tf == 0:
         return 0
+    df_weight = math.log10(N / df)
+    if df_weight < 0:
+        df_weight = 0
 
-    return (1 + math.log10(tf)) * math.log10(N / df)
+    return (1 + math.log10(tf)) * df_weight
 
 
 def rocchio_algo(relevant_matrix, irrelevant_matrix, query_prev, alpha=1, beta=0.75, gamma=0.15):
@@ -92,7 +95,7 @@ def get_document_matrix(docs, bag_of_words, N):
     """
     m = np.zeros((len(docs), len(bag_of_words)))
     for k in range(len(docs)):
-        doc = text_to_list(docs[k]["summary"])
+        doc = text_to_list(docs[k]["summary"]) + text_to_list(docs[k]["title"]) + text_to_list(docs[k]["title"])
 
         doc_tf = [0] * len(bag_of_words)  # document vector initialized to 0's
 
@@ -105,7 +108,8 @@ def get_document_matrix(docs, bag_of_words, N):
         for word in bag_of_words.values():
             idx = word["index"]
             tf = doc_tf[idx]
-            df = word["freq"]
+            df = word["df-freq"]
+            print(N, tf, df)
             w = weight(N, tf, df)
             doc_vec[idx] = w
         m[k] = doc_vec
