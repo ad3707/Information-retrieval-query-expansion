@@ -17,7 +17,7 @@ External libraries: pprint- pretty print to customize the formatting of the outp
 
 **Query-modification Method Description: **
 
-A bag of words representation was created which is a multiset of the words found in the documents. It assigns an index and a frequency of each word. If the word is already found in the bag of words representation, then it would increment the frequency by 1.
+A bag of words representation was created which is a multiset of the words found in the documents. It assigns an index and a frequency of each word. If the word is already found in the bag of words representation, then it would increment the frequency by 1. Bag of words also includes the title words twice to give them more weight. 
 
 weight:
 This function assigns the tf-idf weights to the terms. 
