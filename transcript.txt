@@ -1,0 +1,571 @@
+
+brin
+Query: brin
+Precision: 0.9
+brin
+Query: brin
+Precision: 0.9
+
+Google Search Results:
+==============================
+RESULT 1
+--------------------
+{'summary': 'David Brin is best-known for shining light — plausibly and '
+            'entertainingly — on technology, society, and countless challenges '
+            'confronting our rambunctious\xa0...',
+ 'title': 'worlds of David Brin',
+ 'url': 'https://www.davidbrin.com/'}
+Relevant? (Y/N)  N
+RESULT 2
+--------------------
+{'summary': 'Sergey Mikhailovich Brin is an American business magnate, '
+            'computer scientist, and Internet entrepreneur. Together with '
+            'Larry Page, he co-founded Google.',
+ 'title': 'Sergey Brin - Wikipedia',
+ 'url': 'https://en.wikipedia.org/wiki/Sergey_Brin'}
+Relevant? (Y/N)  Y
+RESULT 3
+--------------------
+{'summary': 'The litigation, transactional and compliance lawyers at Brin & '
+            'Brin have proven success in some of the toughest Texas venues. '
+            '... We have represented clients in a\xa0...',
+ 'title': 'Brin & Brin LLC – Law Firm',
+ 'url': 'https://brinandbrin.com/'}
+Relevant? (Y/N)  N
+RESULT 4
+--------------------
+{'summary': 'BRIN stands for Block Range Index. BRIN is designed for handling '
+            'very large tables in which certain columns have some natural '
+            'correlation with their\xa0...',
+ 'title': 'Documentation: 13: 67.1. Introduction - PostgreSQL',
+ 'url': 'https://www.postgresql.org/docs/13/brin-intro.html'}
+Relevant? (Y/N)  N
+RESULT 5
+--------------------
+{'summary': '6 Sergey Brin on the 2021 Forbes 400 - Sergey Brin stepped down '
+            'as president of Alphabet, parent company of Google, in December '
+            '2019 but remains a\xa0...',
+ 'title': 'Sergey Brin',
+ 'url': 'https://www.forbes.com/profile/sergey-brin/'}
+Relevant? (Y/N)  Y
+RESULT 6
+--------------------
+{'summary': 'NounEdit · One of the radiating sticks of a fan. The outermost '
+            'are larger and longer, and are called panaches. · A single '
+            'silkworm thread extruded from the gland,\xa0...',
+ 'title': 'brin - Wiktionary',
+ 'url': 'https://en.wiktionary.org/wiki/brin'}
+Relevant? (Y/N)  N
+RESULT 7
+--------------------
+{'summary': 'Brin Glass provides commercial glass services including wholesale '
+            'distribution and fabrication of glass and architectural aluminum '
+            'products, glass service\xa0...',
+ 'title': 'Brin Glass: Commercial Glass Company',
+ 'url': 'https://www.bringlass.com/'}
+Relevant? (Y/N)  N
+RESULT 8
+--------------------
+{'summary': 'Sergey Brin, American computer scientist and entrepreneur who '
+            'created, along with Larry Page, the online search engine Google, '
+            'one of the most successful\xa0...',
+ 'title': 'Sergey Brin | Biography, Google, & Facts | Britannica',
+ 'url': 'https://www.britannica.com/biography/Sergey-Brin'}
+Relevant? (Y/N)  Y
+RESULT 9
+--------------------
+{'summary': 'The Art of Brin Levinson.',
+ 'title': 'Brin Levinson',
+ 'url': 'https://www.brinlevinson.com/'}
+Relevant? (Y/N)  N
+RESULT 10
+--------------------
+{'summary': 'Davis Brin (7) Quarterback - TULSA – A returning letterwinner … '
+            'has played in four career games … was an early enrollee in '
+            'January 2018 following his\xa0...',
+ 'title': 'Davis Brin - Football - University of Tulsa Athletics',
+ 'url': 'https://tulsahurricane.com/sports/football/roster/davis-brin/10547'}
+Relevant? (Y/N)  N
+
+	FEEDBACK SUMMARY
+New Query: brin sergey
+Current Precision: 0.3
+Still below the desired precision of 0.9
+
+Indexing results ...
+
+Augmenting by sergey
+brin sergey
+Query: brin sergey
+Precision: 0.9
+
+Google Search Results:
+==============================
+RESULT 1
+--------------------
+{'summary': 'Sergey Mikhailovich Brin is an American business magnate, '
+            'computer scientist, and Internet entrepreneur. Together with '
+            'Larry Page, he co-founded Google.',
+ 'title': 'Sergey Brin - Wikipedia',
+ 'url': 'https://en.wikipedia.org/wiki/Sergey_Brin'}
+Relevant? (Y/N)  Y
+RESULT 2
+--------------------
+{'summary': 'REAL TIME NET WORTH · Sergey Brin stepped down as president of '
+            'Alphabet, parent company of Google, in December 2019 but remains '
+            'a controller shareholder and a\xa0...',
+ 'title': 'Sergey Brin',
+ 'url': 'https://www.forbes.com/profile/sergey-brin/'}
+Relevant? (Y/N)  Y
+RESULT 3
+--------------------
+{'summary': 'Sergey Brin, American computer scientist and entrepreneur who '
+            'created, along with Larry Page, the online search engine Google, '
+            'one of the most successful\xa0...',
+ 'title': 'Sergey Brin | Biography, Google, & Facts | Britannica',
+ 'url': 'https://www.britannica.com/biography/Sergey-Brin'}
+Relevant? (Y/N)  Y
+RESULT 4
+--------------------
+{'summary': 'Aug 11, 2015 ... Sergey Brin is a computer scientist who created '
+            'Google with Larry Page, the two becoming billionaires as Google '
+            "developed into the world's\xa0...",
+ 'title': 'Sergey Brin - Education, Google & Wife - Biography',
+ 'url': 'https://www.biography.com/business-figure/sergey-brin'}
+Relevant? (Y/N)  Y
+RESULT 5
+--------------------
+{'summary': 'Brin is a co-founder of Alphabet, the holding company that owns '
+            "Google, the world's largest search-engine operator. The Mountain "
+            'View, California-based\xa0...',
+ 'title': 'Bloomberg Billionaires Index - Sergey Brin',
+ 'url': 'https://www.bloomberg.com/billionaires/profiles/sergey-brin/'}
+Relevant? (Y/N)  Y
+RESULT 6
+--------------------
+{'summary': 'Aug 5, 2013 ... The billionaire co-founder of Google, Sergey '
+            'Brin, said he invested €250000 in the technology for animal '
+            'welfare reasons.',
+ 'title': "Google's Sergey Brin bankrolled world's first synthetic beef ...",
+ 'url': 'https://www.theguardian.com/.../google-sergey-brin-synthetic-beef- '
+        'hamburger'}
+Relevant? (Y/N)  Y
+RESULT 7
+--------------------
+{'summary': 'Sergey Brin was born in Moscow, Russia in 1973. He immigrated '
+            'with his family to the United States at the age of six and grew '
+            'up in Adelphi, Maryland.',
+ 'title': 'Sergey Brin | Academy of Achievement',
+ 'url': 'https://achievement.org/achiever/sergey-brin/'}
+Relevant? (Y/N)  Y
+RESULT 8
+--------------------
+{'summary': "Sergey Brin's Home Page. Ph.D. student in Computer Science at "
+            'Stanford - sergey@cs.stanford.edu. Research. Currently I am at '
+            'Google.',
+ 'title': 'Sergey Brin',
+ 'url': 'infolab.stanford.edu/~sergey/'}
+Relevant? (Y/N)  Y
+RESULT 9
+--------------------
+{'summary': 'Dec 4, 2019 ... Larry Page and Sergey Brin founded Google in 1996 '
+            'on the back of an algorithm, turned it into one of the most '
+            'valuable companies in the\xa0...',
+ 'title': 'Google co-founders Larry Page and Sergey Brin: a timeline of their '
+          '...',
+ 'url': 'https://www.theverge.com/.../google-alphabet-larry-page-sergey-brin-sundar- '
+        'pichai-co-founders-ceo-timeline'}
+Relevant? (Y/N)  Y
+RESULT 10
+--------------------
+{'summary': 'Jan 19, 2017 ... Sergey Brin tells Davos participants that he did '
+            'not foresee the rise of machine learning, while its future '
+            'implications are even harder to\xa0...',
+ 'title': "Sergey Brin: I didn't see AI coming | World Economic Forum",
+ 'url': 'https://www.weforum.org/.../01/google-sergey-brin-i-didn-t-see-ai-coming/'}
+Relevant? (Y/N)  Y
+
+
+FINAL FEEDBACK SUMMARY
+Query: brin sergey
+Precision Reached: 1.0
+
+
+
+
+_____________________________________________________________________________________________________________________________________________________________
+
+
+per se
+Query: per se
+Precision: 0.9
+per se
+Query: per se
+Precision: 0.9
+
+Google Search Results:
+==============================
+RESULT 1
+--------------------
+{'summary': 'Per Se. Per Se Front Door. center. About. About; Restaurant · '
+            'Team · Info & Directions · Gift Experiences · Reservations; Menus '
+            '& Stories. Menus & Stories',
+ 'title': 'Per Se | Thomas Keller Restaurant Group',
+ 'url': 'https://www.thomaskeller.com/perseny'}
+Relevant? (Y/N)  Y
+RESULT 2
+--------------------
+{'summary': 'We generally use per se to distinguish between something in its '
+            'narrow sense and some larger thing that it represents. Thus, you '
+            'may have no objection to\xa0...',
+ 'title': 'Perse Definition & Meaning - Merriam-Webster',
+ 'url': 'https://www.merriam-webster.com/dictionary/perse'}
+Relevant? (Y/N)  N
+RESULT 3
+--------------------
+{'summary': 'AdverbEdit · In and of itself; by itself; without determination '
+            'by or involvement of extraneous factors; as such quotations ▽ · '
+            '(chiefly in negative polarity\xa0...',
+ 'title': 'per se - Wiktionary',
+ 'url': 'https://en.wiktionary.org/wiki/per_se'}
+Relevant? (Y/N)  N
+RESULT 4
+--------------------
+{'summary': "Opened in 2004, Per Se is Thomas Keller's acclaimed "
+            'interpretation of The French Laundry in the Deutsche Bank Center '
+            'at Columbus Circle.',
+ 'title': 'Per Se - New York, NY | Tock',
+ 'url': 'https://www.exploretock.com/perse'}
+Relevant? (Y/N)  Y
+RESULT 5
+--------------------
+{'summary': 'per se, a Latin phrase meaning "by itself" or "in itself". '
+            'Illegal per se, the legal usage in criminal and antitrust law; '
+            'Negligence per se, legal use in tort\xa0...',
+ 'title': 'Per se - Wikipedia',
+ 'url': 'https://en.wikipedia.org/wiki/Per_se'}
+Relevant? (Y/N)  N
+RESULT 6
+--------------------
+{'summary': '232k Followers, 190 Following, 739 Posts - See Instagram photos '
+            'and videos from Per Se (@perseny)',
+ 'title': 'Untitled',
+ 'url': 'https://www.instagram.com/perseny/?hl=en'}
+Relevant? (Y/N)  N
+RESULT 7
+--------------------
+{'summary': 'Per Se is a New American and French restaurant located on the '
+            'fourth floor of the Time Warner Center at 10 Columbus Circle in '
+            'Manhattan in New York City,\xa0...',
+ 'title': 'Per Se (restaurant) - Wikipedia',
+ 'url': 'https://en.wikipedia.org/wiki/Per_Se_(restaurant)'}
+Relevant? (Y/N)  Y
+RESULT 8
+--------------------
+{'summary': '1720 reviews of Per Se "This is Thomas Keller\'s new resturant in '
+            'New York. A must if you can get a reservation."',
+ 'title': 'PER SE - 6804 Photos & 1720 Reviews - French - 10 Columbus Cir ...',
+ 'url': 'https://www.yelp.com/biz/per-se-new-york'}
+Relevant? (Y/N)  Y
+RESULT 9
+--------------------
+{'summary': 'For example, in tort law, a statutory violation is negligence per '
+            'se. One of the elements a person has to prove in a negligence '
+            'claim is that the defendant\xa0...',
+ 'title': 'per se | Wex | US Law | LII / Legal Information Institute',
+ 'url': 'https://www.law.cornell.edu/wex/per_se'}
+Relevant? (Y/N)  N
+RESULT 10
+--------------------
+{'summary': '5 days ago ... per se | American Dictionary ... by or of itself: '
+            'It is not a pretty town per se, but it is where my family comes '
+            'from, so I like it.',
+ 'title': 'PER SE | meaning in the Cambridge English Dictionary',
+ 'url': 'https://dictionary.cambridge.org/dictionary/english/per-se'}
+Relevant? (Y/N)  N
+
+	FEEDBACK SUMMARY
+New Query: per se restaurant new
+Current Precision: 0.4
+Still below the desired precision of 0.9
+
+Indexing results ...
+
+Augmenting by restaurant new
+per se restaurant new
+Query: per se restaurant new
+Precision: 0.9
+
+Google Search Results:
+==============================
+RESULT 1
+--------------------
+{'summary': 'Restaurants & Bakeries. Yountville; The French Laundry · Bouchon '
+            'Bistro · Bouchon Bakery · Ad Hoc + Addendum · La Calenda; New '
+            'York; Per Se; Las Vegas',
+ 'title': 'Per Se | Thomas Keller Restaurant Group',
+ 'url': 'https://www.thomaskeller.com/perseny'}
+Relevant? (Y/N)  Y
+RESULT 2
+--------------------
+{'summary': 'Per Se is a New American and French restaurant located on the '
+            'fourth floor of the Time Warner Center at 10 Columbus Circle in '
+            'Manhattan in New York City,\xa0...',
+ 'title': 'Per Se (restaurant) - Wikipedia',
+ 'url': 'https://en.wikipedia.org/wiki/Per_Se_(restaurant)'}
+Relevant? (Y/N)  Y
+RESULT 3
+--------------------
+{'summary': "Restaurant Opened in 2004, Per Se is Thomas Keller's acclaimed "
+            'New York interpretation of The French Laundry in the Deutsche '
+            'Bank Center at Columbus Circle.',
+ 'title': 'Per Se entrance sign',
+ 'url': 'https://www.thomaskeller.com/new-york-new-york/per-se/restaurant'}
+Relevant? (Y/N)  Y
+RESULT 4
+--------------------
+{'summary': 'Designed by Adam D. Tihany, Per Se features a serene environment '
+            'with spectacular views of Central Park and Columbus Circle. The '
+            "restaurant is Chef Keller's\xa0...",
+ 'title': 'Per Se - New York, NY | Tock',
+ 'url': 'https://www.exploretock.com/perse'}
+Relevant? (Y/N)  Y
+RESULT 5
+--------------------
+{'summary': 'Jul 21, 2021 ... New tasting menu options at NYC restaurants Masa '
+            'and Per Se could easily push the price of dinner for two past '
+            '$2000.',
+ 'title': 'Per Se and Masa Both Raise Prices of Tasting Menu to $800 - Eater '
+          '...',
+ 'url': 'https://ny.eater.com/2021/7/21/.../per-se-masa-raise-tasting-menu-prices-800'}
+Relevant? (Y/N)  Y
+RESULT 6
+--------------------
+{'summary': 'Jan 12, 2016 ... Dinner or lunch at this grand, hermetic, '
+            'self-regarding, ungenerous restaurant brings a protracted march '
+            'of many dishes. In 2004, the year Per\xa0...',
+ 'title': "At Thomas Keller's Per Se, Slips and Stumbles - The New York Times",
+ 'url': 'https://www.nytimes.com/2016/01/13/dining/pete-wells-per-se-review.html'}
+Relevant? (Y/N)  Y
+RESULT 7
+--------------------
+{'summary': 'Per Se · 10 Columbus Circle, New York, 10019, United States · 355 '
+            'USD • Contemporary, French\xa0...',
+ 'title': 'Per Se – New York - a MICHELIN Guide Restaurant',
+ 'url': 'https://guide.michelin.com/en/new-york-state/new-york/restaurant/per-se'}
+Relevant? (Y/N)  Y
+RESULT 8
+--------------------
+{'summary': "The official page of Thomas Keller's Per Se 10 Columbus Cir, Fl "
+            '4th, New City, NY 10019.',
+ 'title': 'Per Se - Home - New City, New York - Menu, prices, restaurant ...',
+ 'url': 'https://www.facebook.com/perse/'}
+Relevant? (Y/N)  Y
+RESULT 9
+--------------------
+{'summary': "Per Se. @PerSeNY. Official page of. @Chef_Keller. 's fine dining "
+            'restaurant in #NewYorkCity, since 2004. New York, NY '
+            'exploretock.com/perse Joined January\xa0...',
+ 'title': 'Per Se (@PerSeNY) / Twitter',
+ 'url': 'https://twitter.com/perseny'}
+Relevant? (Y/N)  Y
+RESULT 10
+--------------------
+{'summary': "Per Se · 10 Columbus Cir. Fl 4 New York, NY 10019. Hell's "
+            'Kitchen, Midtown West. Directions · (212) 823-9335. Call Now · '
+            'Full menu · More Info. Menu, Hours, Takes\xa0...',
+ 'title': 'PER SE - 10 Columbus Cir, New York, NY - Restaurant Reviews',
+ 'url': 'https://www.yelp.com/biz/per-se-new-york'}
+Relevant? (Y/N)  Y
+
+
+FINAL FEEDBACK SUMMARY
+Query: per se restaurant new
+Precision Reached: 1.0
+
+
+________________________________________________________________________________________________________________________________________________
+cases
+Query: cases
+Precision: 0.9
+cases
+Query: cases
+Precision: 0.9
+
+Google Search Results:
+==============================
+RESULT 1
+--------------------
+{'summary': 'From court and program offices in the Bronx, Brooklyn, and '
+            'Manhattan, CASES provides community-based alternatives to jail '
+            'and prison. These programs address\xa0...',
+ 'title': 'CASES: Home',
+ 'url': 'https://www.cases.org/'}
+Relevant? (Y/N)  N
+RESULT 2
+--------------------
+{'summary': 'Your Community · County View · County View Map Thumbnail ; Case, '
+            'Death, & Laboratory Testing Trends by Location and Demographics · '
+            'Trends in Cases and Deaths by\xa0...',
+ 'title': 'CDC COVID Data Tracker',
+ 'url': 'https://covid.cdc.gov/covid-data-tracker/'}
+Relevant? (Y/N)  Y
+RESULT 3
+--------------------
+{'summary': 'Live statistics and coronavirus news tracking the number of '
+            'confirmed cases, recovered patients, tests, and death toll due to '
+            'the COVID-19 coronavirus from\xa0...',
+ 'title': 'COVID Live - Coronavirus Statistics - Worldometer',
+ 'url': 'https://www.worldometers.info/coronavirus/'}
+Relevant? (Y/N)  Y
+RESULT 4
+--------------------
+{'summary': 'Jan 20, 2022 ... Percent of confirmed or probable cases by '
+            'demographics and region; Percent of cases resulting in '
+            'hospitalization within age group; Percent of\xa0...',
+ 'title': 'COVID-19: Wisconsin Cases | Wisconsin Department of Health ...',
+ 'url': 'https://www.dhs.wisconsin.gov/covid-19/cases.htm'}
+Relevant? (Y/N)  Y
+RESULT 5
+--------------------
+{'summary': 'Track Covid-19 in your area, and get the latest state and county '
+            'data on cases, deaths, hospitalizations, tests and vaccinations.',
+ 'title': 'Covid in the U.S.: Latest Maps, Case and Death Counts - The New ...',
+ 'url': 'https://www.nytimes.com/interactive/2021/us/covid-cases.html'}
+Relevant? (Y/N)  Y
+RESULT 6
+--------------------
+{'summary': 'Cases. The Court has a twofold role: to settle, in accordance '
+            'with international law, legal disputes submitted to it by States '
+            '(contentious cases) and to\xa0...',
+ 'title': 'Cases | International Court of Justice',
+ 'url': 'https://www.icj-cij.org/en/cases'}
+Relevant? (Y/N)  N
+RESULT 7
+--------------------
+{'summary': 'Shop Verizon for an extensive selection of phone cases. Protect '
+            'your phone from accidents. Featuring products from OtterBox, '
+            'Case-Mate, Kate Spade & more.',
+ 'title': 'Phone Cases for your iPhone, Samsung, and more | Verizon',
+ 'url': 'https://www.verizon.com/products/phone-cases/'}
+Relevant? (Y/N)  N
+RESULT 8
+--------------------
+{'summary': 'Coronavirus COVID-19 Global Cases by the Center for Systems '
+            'Science and Engineering (CSSE) at Johns Hopkins University (JHU)',
+ 'title': 'COVID-19 Map - Johns Hopkins Coronavirus Resource Center',
+ 'url': 'https://coronavirus.jhu.edu/map.html'}
+Relevant? (Y/N)  Y
+RESULT 9
+--------------------
+{'summary': 'US Supreme Court cases from the 2021-2022 term. ... A case in '
+            'which the Court will decide whether federal courts have '
+            'subject-matter jurisdiction to confirm\xa0...',
+ 'title': '2021-2022 Term | Oyez',
+ 'url': 'https://www.oyez.org/cases'}
+Relevant? (Y/N)  N
+RESULT 10
+--------------------
+{'summary': 'Starting on February 1, 2022, VDH is using 2020 National Center '
+            'for Health Statistics (NCHS) population estimates for COVID-19 '
+            'events (cases,\xa0...',
+ 'title': 'Cases - Coronavirus',
+ 'url': 'https://www.vdh.virginia.gov/coronavirus/.../covid-19-in-virginia-cases/'}
+Relevant? (Y/N)  Y
+
+	FEEDBACK SUMMARY
+New Query: cases covid coronavirus
+Current Precision: 0.6
+Still below the desired precision of 0.9
+
+Indexing results ...
+
+Augmenting by covid coronavirus
+cases covid coronavirus
+Query: cases covid coronavirus
+Precision: 0.9
+
+Google Search Results:
+==============================
+RESULT 1
+--------------------
+{'summary': 'Live statistics and coronavirus news tracking the number of '
+            'confirmed cases, recovered patients, tests, and death toll due to '
+            'the COVID-19 coronavirus from\xa0...',
+ 'title': 'COVID Live - Coronavirus Statistics - Worldometer',
+ 'url': 'https://www.worldometers.info/coronavirus/'}
+Relevant? (Y/N)  Y
+RESULT 2
+--------------------
+{'summary': 'Data for ZIP codes with 7 or fewer cases are suppressed. '
+            'Hospitalization data reflect COVID-19 bed occupancy in Maryland '
+            'hospitals.',
+ 'title': 'Maryland Department of Health: Coronavirus',
+ 'url': 'https://coronavirus.maryland.gov/'}
+Relevant? (Y/N)  Y
+RESULT 3
+--------------------
+{'summary': 'Coronavirus COVID-19 Global Cases by the Center for Systems '
+            'Science and Engineering (CSSE) at Johns Hopkins University (JHU)',
+ 'title': 'COVID-19 Map - Johns Hopkins Coronavirus Resource Center',
+ 'url': 'https://coronavirus.jhu.edu/map.html'}
+Relevant? (Y/N)  Y
+RESULT 4
+--------------------
+{'summary': 'Graph of confirmed cases of COVID-19 by specimen collection date, '
+            '... for 2019 novel coronavirus disease (COVID-19) (PDF).',
+ 'title': 'Situation Update for COVID-19 - Minnesota Dept. of Health',
+ 'url': 'https://www.health.state.mn.us/diseases/coronavirus/situation.html'}
+Relevant? (Y/N)  Y
+RESULT 5
+--------------------
+{'summary': 'COVID Data Tracker. Find maps and charts tracking cases, deaths, '
+            'and trends of COVID-19 in the United States, updated daily by 8 '
+            'pm ET\xa0...',
+ 'title': 'CDC COVID Data Tracker',
+ 'url': 'https://covid.cdc.gov/covid-data-tracker/'}
+Relevant? (Y/N)  Y
+RESULT 6
+--------------------
+{'summary': 'Find links to guidance and information on all topics related to '
+            'COVID-19, including the COVID-19 vaccine, symptom self-check, ... '
+            'Cases in US Last 30 Days.',
+ 'title': 'Coronavirus Disease 2019 (COVID-19) | CDC',
+ 'url': 'https://www.cdc.gov/coronavirus/2019-ncov/index.html'}
+Relevant? (Y/N)  Y
+RESULT 7
+--------------------
+{'summary': 'World Health Organization Coronavirus disease situation dashboard '
+            'presents official daily counts of COVID-19 cases and deaths '
+            'worldwide,\xa0...',
+ 'title': 'WHO Coronavirus (COVID-19) Dashboard',
+ 'url': 'https://covid19.who.int/'}
+Relevant? (Y/N)  Y
+RESULT 8
+--------------------
+{'summary': 'Description: Coronavirus - Coronavirus. ... Download the MI COVID '
+            'Alert app and get notifications if you may have been exposed to '
+            '... Total Confirmed Cases.',
+ 'title': 'Coronavirus - Coronavirus',
+ 'url': 'https://www.michigan.gov/coronavirus/'}
+Relevant? (Y/N)  Y
+RESULT 9
+--------------------
+{'summary': "While we can't prevent all cases of COVID-19, we can continue to "
+            "limit the spread ... CDC's Coronavirus Disease 2019-Associated "
+            'Hospitalization Surveillance\xa0...',
+ 'title': 'COVID Data Tracker Weekly Review | CDC',
+ 'url': 'https://www.cdc.gov/coronavirus/2019-ncov/covid.../covidview/index.html'}
+Relevant? (Y/N)  Y
+RESULT 10
+--------------------
+{'summary': 'These data represent confirmed cases of COVID-19 reported to the '
+            'Georgia Department of Public Health.',
+ 'title': 'COVID-19 Status Report | Georgia Department of Public Health',
+ 'url': 'https://dph.georgia.gov/covid-19-daily-status-report'}
+Relevant? (Y/N)  Y
+
+
+FINAL FEEDBACK SUMMARY
+Query: cases covid coronavirus
+Precision Reached: 1.0
