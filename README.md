@@ -15,16 +15,16 @@ README.md
 
 External libraries: pprint- pretty print to customize the formatting of the output, numpy - for manipulating matrices, math, googleapiclient.discovery 
 
-**Query-modification Method fo Description: **
+**Query-modification Method Description: **
 
 A bag of words representation was created which is a multiset of the words found in the documents. It assigns an index and a frequency of each word. If the word is already found in the bag of words representation, then it would increment the frequency by 1.
 
 weight:
 This function assigns the tf-idf weights to the terms. 
 
-We implemented Rocchio's algorithm which is used to determine the query term weights in the next query. We set alpha to 1, beta to 0.75, and gamma to 0.15 based on this article https://nlp.stanford.edu/IR-book/html/htmledition/the-rocchio71-algorithm-1.html. 
+We implemented Rocchio's algorithm which is used to determine the query term weights in the next query. We also normalized the weights and set alpha to 1, beta to 0.75, and gamma to 0.15 based on this article https://nlp.stanford.edu/IR-book/html/htmledition/the-rocchio71-algorithm-1.html. 
 
-After we calculated the weights of the terms, the get_query_words function returns the words we are augmenting to the new query. If the word is already in the query, we set it to negative infinity. The algorithm for this function is that it gives the indices of the top three weights in the matrix. If the product of a and the difference between the top two values are less than the third and second highest weights, then it will append the second highest and highest weighted word. Otherwise, it will just append the highest weighted word in the new query. 
+After we calculated the weights of the terms, the get_query_words function returns the words we are augmenting to the new query. If the word is already in the query, we set it to negative infinity. The algorithm for this function is that it gives the indices of the top three weights in the matrix. If the product of a and the difference between the top two values are less than the third and second highest weights, then it will append the highest and second highest weighted word in that order. Otherwise, it will just append the highest weighted word in the new query. 
 
 After, we had a function called get_word_from_idx which returns the word associated with the given index in the bag of words representation. 
 
