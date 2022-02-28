@@ -3,12 +3,11 @@ import numpy as np
 
 def make_bag_of_words(query_li, docs):
     """
-    creates a bag of words representation using all of the titles + summaries of the documents as well as the current query
+    creates a bag of words representation using all the titles + summaries of the documents as well as the current query
     creates a dictionary where each unique words has an assigned index and frequency of the word in the collection
 
+    :param docs: list of json documents that contain summary, title, and url
     :param query_li: list of query words
-    :param relevant_docs: list of json relevant documents that contain summary, title, and url
-    :param irrelevant_docs: list of json irrelevant documents that contain summary, title, and url
     :return: dictionary of words -- that map to --> dictionary with index and frequency of word
     
     example of a key: value in bag of words
@@ -57,7 +56,6 @@ def clean_word(word):
     :return: lower-case string
     """
     return ''.join(ch for ch in word if ch.isalnum()).lower()
-    return word.lower() #TODO
 
 
 def text_to_list(text):

@@ -3,22 +3,38 @@ import math
 from textprocessing import text_to_list, get_word_from_idx
 
 
-def weight(N, tf, df):
+def get_document_matrix(docs, bag_of_words, N):
     """
-    using the tf, df terms, uses tf-idf weight function to return scalar value
-
-    :param N: number of documents in the collection (usually 10)
-    :param tf: term frequency in a given document
-    :param df: document frequency of term in collection
-    :return: float value
+    This function initializes the document vector and finds the tf and df for the documents.
+    :param docs: list of document dictionaries that contain summary, title, and url
+    :param bag_of_words: dictionary of words -- that map to --> dictionary with index and frequency of word
+    example of a key: value in bag of words
+        "cup": {"index": 1,
+                "freq": 5}
+    :param N: number of documents in collection
+    :return: numpy matrix of shape length of documents x length of bag of words
     """
-    if tf == 0:
-        return 0
-    df_weight = math.log10(N / df)
-    if df_weight < 0:
-        df_weight = 0
+    m = np.zeros((len(docs), len(bag_of_words)))
+    for k in range(len(docs)):
+        doc = text_to_list(docs[k]["summary"]) + text_to_list(docs[k]["title"]) + text_to_list(docs[k]["title"])
 
-    return (1 + math.log10(tf)) * df_weight
+        doc_tf = [0] * len(bag_of_words)  # document vector initialized to 0's
+
+        # doc_tf has the frequency count of each term
+        for term in doc:
+            doc_tf[bag_of_words[term]["index"]] += 1
+
+        # now find the if-idf weights for the document
+        doc_vec = np.zeros((len(bag_of_words)))
+        for word in bag_of_words.values():
+            idx = word["index"]
+            tf = doc_tf[idx]
+            df = word["df-freq"]
+            w = weight(N, tf, df)
+            doc_vec[idx] = w
+        m[k] = doc_vec
+
+    return m
 
 
 def rocchio_algo(relevant_matrix, irrelevant_matrix, query_prev, alpha=1, beta=0.75, gamma=0.15):
@@ -75,42 +91,22 @@ def get_query_words(prev_query, next_query, bag_of_words):
     if a * (sorted_max[2] - sorted_max[1]) <= (sorted_max[1] - sorted_max[0]):
         new_query_words.append(get_word_from_idx(max_idxs[1], bag_of_words))
 
-    a = get_word_from_idx(max_idxs[0], bag_of_words)
-    b = get_word_from_idx(max_idxs[1], bag_of_words)
-    c = get_word_from_idx(max_idxs[2], bag_of_words)
-
     return new_query_words
 
 
-def get_document_matrix(docs, bag_of_words, N):
+def weight(N, tf, df):
     """
-    This function initializes the document vector and finds the tf and df for the documents.
-    :param docs: list of document dictionaries that contain summary, title, and url
-    :param bag_of_words: dictionary of words -- that map to --> dictionary with index and frequency of word
-    example of a key: value in bag of words
-        "cup": {"index": 1,
-                "freq": 5}
-    :param N: number of documents in collection
-    :return: numpy matrix of shape length of documents x length of bag of words
+    using the tf, df terms, uses tf-idf weight function to return scalar value
+
+    :param N: number of documents in the collection (usually 10)
+    :param tf: term frequency in a given document
+    :param df: document frequency of term in collection
+    :return: float value
     """
-    m = np.zeros((len(docs), len(bag_of_words)))
-    for k in range(len(docs)):
-        doc = text_to_list(docs[k]["summary"]) + text_to_list(docs[k]["title"]) + text_to_list(docs[k]["title"])
+    if tf == 0:
+        return 0
+    df_weight = math.log10(N / df)
+    if df_weight < 0:
+        df_weight = 0
 
-        doc_tf = [0] * len(bag_of_words)  # document vector initialized to 0's
-
-        # doc_tf has the frequency count of each term
-        for term in doc:
-            doc_tf[bag_of_words[term]["index"]] += 1
-
-        # now find the if-idf weights for the document
-        doc_vec = np.zeros((len(bag_of_words)))
-        for word in bag_of_words.values():
-            idx = word["index"]
-            tf = doc_tf[idx]
-            df = word["df-freq"]
-            w = weight(N, tf, df)
-            doc_vec[idx] = w
-        m[k] = doc_vec
-
-    return m
+    return (1 + math.log10(tf)) * df_weight
