@@ -52,7 +52,7 @@ Contains functionality to retrieve top 10 google results from the API
   - get_results: retrieves the top 10 results for a query and returns a list of dictionaries that contain the title, url, and summary
   - try_connection: tries to make a call to the api with the key and id
   - valid_args: verifies whether the connection to the api is valid  
-####*non-HTML files were ignored.*
+#### *non-HTML files were ignored.* ####
 
 ### External libraries:
 - pprint - to pretty print any dictionary such as the document in get_user_feedback
