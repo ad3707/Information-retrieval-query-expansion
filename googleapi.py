@@ -19,10 +19,27 @@ def valid_args(args):
     try:
         if float(target_precision) > 1 or float(target_precision) < 0:
             return False
-        r = get_results(raw_query, target_precision, key, engine_id)
+        r = try_connection(raw_query, key, engine_id)
         return True
     except:
         return False
+
+
+def try_connection(query, key, engine_id):
+    """
+    function created to test connection using key and engine ID for Google Search API
+
+    :param query: string that contains 1 or more words
+    :param key: Google Custom Search Engine JSON API Key
+    :param engine_id: Engine ID
+    :return: result of query
+    """
+    service = build("customsearch", "v1",
+                    developerKey=key)
+    return service.cse().list(
+        q=query,
+        cx=engine_id,
+    ).execute()
 
 
 def get_results(query, target_precision, key, engine_id):
@@ -38,7 +55,7 @@ def get_results(query, target_precision, key, engine_id):
     """
     service = build("customsearch", "v1",
                     developerKey=key)
-    print(query)
+
     res = service.cse().list(
         q=query,
         cx=engine_id,
@@ -47,9 +64,12 @@ def get_results(query, target_precision, key, engine_id):
     print("Query:", query)
     print("Precision:", target_precision)
 
-    user_res = list()
+    if "items" not in res:
+        return None, 0
+
     num_of_results = len(list(res["items"]))
 
+    user_res = list()
     for result in res["items"]:
         if "fileType" in result:
             continue

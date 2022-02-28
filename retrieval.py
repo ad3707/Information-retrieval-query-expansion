@@ -19,7 +19,7 @@ def get_feedback_from_user(user_res):
 
     print("\nGoogle Search Results:\n" + "=" * 30)
     for i in range(1, 1 + len(user_res)):
-        print("RESULT " + str(i) + "\n" + "-" * 20)
+        print("\nRESULT " + str(i) + "\n" + "-" * 20)
         doc = user_res[i - 1]
         pprint.pprint(doc)
         feedback = input("Relevant? (Y/N)  ")
@@ -60,17 +60,18 @@ def main():
         print("Usage: python3 retrieval.py <google api key> <google engine id> <precision> <query>")
         return
 
-    key, engine_id, target_precision, raw_query = args
+    key, engine_id, target_precision, next_q = args
 
     target_precision = float(target_precision)
-    query_li = text_to_list(raw_query)
-    docs, num_of_results = get_results(raw_query, target_precision, key, engine_id)
+    query_li = text_to_list(next_q)
+    docs, num_of_results = get_results(next_q, target_precision, key, engine_id)
 
     if num_of_results < 10:
-        print("Less than 10 results were found in first iteration.\nProgram will terminate.")  # TODO: later problem
+        print("Less than 10 results were found in first iteration.\nProgram will terminate.")
         return
 
     relevant_docs, irrelevant_docs = get_feedback_from_user(docs)
+    i = 1
     if len(relevant_docs) == 0:
         print("No relevant documents found in first iteration.\nProgram will terminate.")
         return
@@ -95,8 +96,13 @@ def main():
         print("\nIndexing results ...\n")
         print("Augmenting by", " ".join(next_q_list))
 
-        user_res, num_of_results = get_results(next_q, target_precision, key, engine_id)
-        relevant_docs, irrelevant_docs = get_feedback_from_user(user_res)
+        docs, num_of_results = get_results(next_q, target_precision, key, engine_id)
+        relevant_docs, irrelevant_docs = get_feedback_from_user(docs)
+        i += 1
+
+        if len(relevant_docs) == 0:
+            print("No relevant documents found in during iteration.\nProgram will terminate.")
+            break
 
         precision_meet, current_precision = is_precision_meet(target_precision, relevant_docs, irrelevant_docs)
         query_li = query_li + next_q_list
@@ -104,6 +110,7 @@ def main():
     print("\n\nFINAL FEEDBACK SUMMARY")
     print("Query:", next_q)
     print("Precision Reached:", current_precision)
+    print("Number of Iterations:", i)
 
 if __name__ == '__main__':
     main()

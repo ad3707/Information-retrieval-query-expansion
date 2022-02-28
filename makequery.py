@@ -109,7 +109,6 @@ def get_document_matrix(docs, bag_of_words, N):
             idx = word["index"]
             tf = doc_tf[idx]
             df = word["df-freq"]
-            print(N, tf, df)
             w = weight(N, tf, df)
             doc_vec[idx] = w
         m[k] = doc_vec
